@@ -2,11 +2,13 @@ import { FETCH_GROUP, FETCH_GROUPS } from '../actions/actions';
 
 const TEST_GROUP_1 = {
     groupName: "test_group_1",
+    numMembers: 2,
     groupId: 1
 }
 
 const TEST_GROUP_2 = {
     groupName: "test_group_2",
+    numMembers: 5,
     groupId: 2
 }
 

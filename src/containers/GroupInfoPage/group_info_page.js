@@ -10,13 +10,19 @@ class RegistrationPage extends Component {
 
     render() {
         return (
-        <div className="jumbotron"><h1>Group Info</h1>
-           <p>Manage gas cost per member and access historical trip information</p>
-            <TripList/>
-            <InfoPanel/>
-            <MembersList/>
-         </div>
+        <div>
+        <div className="jumbotron jumbotron-fluid"><h1>Group Info</h1>
+           <p>Manage gas cost per member and access historical trip information.</p>
 
+         </div>
+         <div className="container">
+
+         <InfoPanel/>
+         <TripList/>
+         <MembersList/>
+
+         </div>
+</div>
 
         )
     }

@@ -1,10 +1,14 @@
-import React, {Component} from 'react';
+import React, {Component, PropTypes} from 'react';
 import {connect} from 'react-redux';
 import { register } from '../../actions/actions';
 
 import './register.css';
 
 class RegistrationPage extends Component {
+    static contextTypes = {
+        router: PropTypes.object
+    }
+
     constructor(props) {
         super(props);
 
@@ -19,7 +23,7 @@ class RegistrationPage extends Component {
             if (res.payload.message === "Network Error") {
                 alert("Registration Failed");
             } else {
-
+                this.context.router.push('/groups');
             }
         })
     }

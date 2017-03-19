@@ -1,10 +1,14 @@
-import React, {Component} from 'react';
+import React, {Component, PropTypes} from 'react';
 import {connect} from 'react-redux';
 import { login } from '../../actions/actions';
 
 import './login_page.css';
 
 class LoginPage extends Component {
+    static contextTypes = {
+        router: PropTypes.object
+    }
+
     constructor(props) {
         super(props);
 
@@ -19,7 +23,7 @@ class LoginPage extends Component {
             if (res.payload.message === "Network Error") {
                 alert("Login Failed");
             } else {
-
+                this.context.router.push('/groups');
             }
         })
     }

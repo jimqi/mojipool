@@ -3,10 +3,10 @@ import { connect } from 'react-redux';
 
 import './register.css';
 
-class Register extends Component {
+class RegistrationPage extends Component {
     render() {
         return (
-            <div> Placeholder for Registration </div>
+            <div htmlClass="placeholder-div"> Placeholder for Registration </div>
         )
     }
 }
@@ -17,4 +17,4 @@ function mapStateToProps(state) {
     }
 }
 
-export default connect(mapStateToProps, null)(Register);
+export default connect(mapStateToProps, null)(RegistrationPage);

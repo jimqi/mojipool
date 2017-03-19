@@ -6,4 +6,4 @@ const memberListItem = () => {
     return <div> Member List Item Placeholder </div>;
 };
 
-export default memberListItemListItem;
+export default memberListItem;

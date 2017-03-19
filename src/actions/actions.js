@@ -61,8 +61,8 @@ export function fetchGroup(groupId) {
 }
 
 export function fetchMembers(groupId) {
-    const request = axios.put(`${SERVER_ADDRESS}/groups`, {
-        groupId: groupId
+    const request = axios.post(`${SERVER_ADDRESS}/groups/members`, {
+        groupID: groupId
     });
 
     return {

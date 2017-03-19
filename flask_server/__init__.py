@@ -18,6 +18,7 @@ cur = conn.cursor()
 def hello():
     return "Hello World!!"
 
+
 @app.route('/login', methods = ['POST'])
 def login():
     if request.method == 'POST':
@@ -40,13 +41,19 @@ def login():
         resp.status_code = 200
         return resp
 
+
+
 def insert_session(sessionID, userID):
     cur = conn.cursor()
     query = "insert into session(sid,uid) values(\'{sessionid}\', {userid})".format(sessionid=sessionID, userid=userID)
     cur.execute(query)
 
-@app.route('/register', methods = ['POST'])
-def register():
+
+
+
+
+@app.route('/signup', methods = ['POST'])
+def signup():
 	data = {}
         json_dict = request.get_json() # Recieve and then read/extract json data
         password = json_dict["password"]
@@ -67,7 +74,7 @@ def register():
 
 
 @app.route('/groups', methods = ['POST'])
-def create_group():
+def groups():
 	data = {}
 	json_dict = request.get_json()
 	uID = json_dict["uID"]
@@ -76,25 +83,15 @@ def create_group():
 	cur.execute("SELECT gid From groups WHERE ownerID={uID};".format(uID=int(uID)))
 	gID = str(cur.fetchall()[0][0])
 	data["uID"] = uID
-    data["status"] = "true"
-    data["gid"] = gID
+        data["status"] = "true"
+        data["gid"] = gID
 	print(data)
-    resp = jsonify(data)
-    resp.status_code = 200
-    return resp
+        resp = jsonify(data)
+        resp.status_code = 200
+        return resp
 
-
-@app.route('/groups', methods = ['GET'])
-def get_groups():
-    resp = "TODO"
-    resp.status_code = 200
-    return resp
-
-
-
-
-@app.route('/groups/members', methods = ['POST'])
-def create_member():
+@app.route('/addmember', methods = ['POST'])
+def addmember():
     data = {}
     json_dict = request.get_json() # Recieve and then read/extract json data
     username = json_dict["username"]
@@ -110,11 +107,8 @@ def create_member():
     resp.status_code = 200
     return resp
 
-@app.route('/groups/members', methods = ['GET'])
-def get_members():
-    resp = "TODO"
-    resp.status_code = 200
-    return resp
+
+
 
 #@app.route('/', methods = ['POST'])
 
@@ -122,3 +116,8 @@ def get_members():
 
 
 
+
+
+
+if __name__ == "__main__":
+    app.run(host='0.0.0.0', port=5000);

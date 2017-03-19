@@ -17,7 +17,7 @@ export default (
         <Route path="login" component={LoginPage} />
         <Route path="register" component={RegistrationPage} />
         <Route path="groups" component={GroupsPage} />
+        <Route path="groups/:id" component={GroupInfoPage} />
         <Route path="create" component={CreateGroup} />
-        <Route path="groupinfo" component={GroupInfoPage} />
     </Route>
 )

@@ -23,9 +23,6 @@ class RegistrationPage extends Component {
 }
 
 
-
-
-
 function mapStateToProps(state) {
     return {
 

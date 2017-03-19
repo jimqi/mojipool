@@ -1,11 +1,16 @@
 import React from 'react';
+import { Link } from 'react-router';
 
 import './group_list_item.css';
-const GroupListItem = ({ groupName, numMembers }) => {
+const GroupListItem = ({groupName, numMembers, groupId}) => {
     return (
     <div className="col-md-6 force-to-center">
 
-               <button type="button" text="primary" className="btn btn-outline-primary">{groupName} {numMembers}</button>
+        <Link className="btn btn-outline-primary" to={`groups/${groupId}`}>
+                <div className="specialpanel">
+                    {groupName} {numMembers} {groupId}
+                </div>
+        </Link>
 
    </div>
     )

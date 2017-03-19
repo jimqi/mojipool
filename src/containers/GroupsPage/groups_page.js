@@ -13,7 +13,7 @@ class RegistrationPage extends Component {
     renderGroups() {
         return this.props.groups.map((group) => {
             return (
-                <GroupListItem groupName={group.groupName} numMembers={group.numMembers} key={group.groupId} />
+                <GroupListItem groupName={group.groupName} numMembers={group.numMembers} groupId={group.groupId} key={group.groupId} />
             )
         })
     }

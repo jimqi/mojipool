@@ -1,6 +1,6 @@
 import { browserHistory } from 'react-router';
 
-import { LOGIN_SUCCESS, REGISTER, MOJIO_CLIENT } from '../actions/actions';
+import { LOGIN_SUCCESS, REGISTER } from '../actions/actions';
 
 const INITIAL_STATE = {userId: null, sessionId: null};
 

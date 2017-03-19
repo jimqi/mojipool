@@ -1,32 +1,42 @@
 import axios from 'axios';
 
-export const SERVER_ADDRESS = 'http://40.71.231.27:5000';
-export const TEST_ACTION = 'TEST_ACTION';
+export const SERVER_ADDRESS = 'https://40.71.231.27:5000';
+
 export const LOGIN = 'LOGIN';
+export const LOGIN_SUCCESS = 'LOGIN_SUCCESS';
+export const LOGIN_FAILURE = 'LOGIN_FAILURE';
 export const REGISTER = 'REGISTER';
+export const GET_TOKEN = 'GET_TOKEN';
 export const CREATE_GROUP = 'CREATE_GROUP';
 export const FETCH_GROUP = 'FETCH_GROUP';
 export const FETCH_GROUPS = 'FETCH_GROUPS';
 export const FETCH_GROUPS_SUCCESS = 'FETCH_GROUPS_SUCCESS';
 export const FETCH_GROUPS_FAILURES = 'FETCH_GROUPS_FAILURE';
 
-export function testAction(testString) {
-    console.log(testString);
-    return {
-        type: TEST_ACTION,
-        payload: testString,
+export function login(username, password) {
+    return function (dispatch) {
+        axios.post(`${SERVER_ADDRESS}/login`, {
+            username: username,
+            password: password
+        }).then((response) => {
+            dispatch(loginSuccess(response));
+        }).catch((err) => {
+            dispatch(loginFailure(err));
+        })
     }
 }
 
-export function login(username, password) {
-    const request = axios.post(`${SERVER_ADDRESS}/login`, {
-        username: username,
-        password: password
-    });
-
+export function loginSuccess(response) {
     return {
-        type: LOGIN,
-        payload: request,
+        type:LOGIN_SUCCESS,
+        payload: response
+    }
+}
+
+export function loginFailure(err) {
+    return {
+        type: LOGIN_FAILURE,
+        payload: err
     }
 }
 
@@ -40,6 +50,10 @@ export function register(username, password) {
         type: REGISTER,
         payload: request,
     }
+}
+
+export function getToken() {
+
 }
 
 export function fetchGroup(groupId) {
@@ -76,9 +90,10 @@ export function fetchGroupsFailure(err) {
         payload: err
     }
 }
-export function createGroup(groupName) {
+export function createGroup(uID, groupName) {
     const request = axios.post(`${SERVER_ADDRESS}/groups`, {
-        groupname: groupName
+        uID: uID,
+        groupName: groupName
     });
 
     return {

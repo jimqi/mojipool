@@ -5,10 +5,6 @@ import { login } from '../../actions/actions';
 import './login_page.css';
 
 class LoginPage extends Component {
-    static contextTypes = {
-        router: PropTypes.object
-    }
-
     constructor(props) {
         super(props);
 
@@ -19,14 +15,9 @@ class LoginPage extends Component {
 
     onSubmit(event) {
         event.preventDefault();
-        this.props.login(this.state.username, this.state.password).then((res) => {
-            if (res.payload.message === "Network Error") {
-                alert("Login Failed");
-            } else {
-                this.context.router.push('/groups');
-            }
-        })
+        this.props.login(this.state.username, this.state.password);
     }
+
 
     render() {
         return (

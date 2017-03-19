@@ -31,6 +31,8 @@ class RegistrationPage extends Component {
     render() {
         return (
             <div className="container">
+            <div className="row">
+            <div className="col-md-12">
                 <div id="login" className="signin-card">
                     <div className="logo-image">
 
@@ -59,6 +61,8 @@ class RegistrationPage extends Component {
                         </div>
 
                     </form>
+                    </div>
+                </div>
                 </div>
             </div>
         )

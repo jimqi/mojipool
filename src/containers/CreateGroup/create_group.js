@@ -27,7 +27,44 @@ class CreateGroup extends Component {
 
     render() {
         return(
-            <div> test </div>
+             <div>
+              <div className="jumbotron jumbotron-fluid"><h1>Creating a Group</h1></div>
+              <form onSubmit={this.onSubmit} role="form">
+              <div className="container">
+              <div className="panel panel-default">
+              <div className="panel-heading"><h4 className="text-center">Name of Group</h4></div>
+              <div className="panel-body">
+
+              <div id="form-register-username" className="form-group">
+                  <input id="groupname" value="" className="form-control" name="groupname" type="text" size="18"
+                         alt="login" onChange={(event) => this.setState({ username: event.target.value })} required/>
+                  <span className="form-highlight"></span>
+                  <span className="form-bar"></span>
+              </div>
+              </div>
+              </div>
+
+
+              <div>
+               <div className="panel panel-default">
+                            <div className="panel-heading"><h4 className="text-center">Choose Vehicle</h4></div>
+                            <div className="panel-body">
+                                <select className="form-control" >
+                                <option value="volvo">Volvo</option>
+                                <option value="saab">Saab</option>
+                                <option value="opel">Opel</option>
+                                <option value="audi">Audi</option>
+                                </select>
+
+                                                                </div>
+                                                          </div>
+                                                      <button className="btn btn-block btn-info" type="submit" name="Submit">Create
+                                                      </button>
+                                                  </div>
+                                                </div>
+                                              </form>
+
+             </div>
         )
 
     }

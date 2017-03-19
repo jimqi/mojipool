@@ -16,10 +16,15 @@ class RegistrationPage extends Component {
 
          </div>
          <div className="container">
-
+        <div className="col-md-12">
          <InfoPanel/>
+         </div>
+         <div className="col-md-6">
          <TripList/>
+         </div>
+         <div className="col-md-6">
          <MembersList/>
+         </div>
 
          </div>
 </div>

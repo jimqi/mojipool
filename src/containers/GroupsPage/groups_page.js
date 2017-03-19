@@ -20,20 +20,39 @@ class RegistrationPage extends Component {
 
     render() {
         return (
-                <div className="">
+                <div>
                     <div className="jumbotron"><h1>Manage Groups</h1>
-                    <p>Create or Choose Group</p>
+                    <p>Create or Choose a Group</p>
                     </div>
                 <div className="container">
+<div className="col-md-6">
+                <div className="panel panel-default">
+                <div className="panel-heading"><h1>Create New Group</h1></div>
+                <div className="panel-body">
                     <Link to="create">
-                        <button>Create Group</button>
+                        <button className="btn btn-outline-primary ">Create Group</button>
                     </Link>
+                    </div>
                 </div>
+                </div>
+
+
+
+<div className="col-md-6">
+
+ <div className="panel panel-default">
+                <div className="panel-heading"><h1>Choose Existing Group</h1></div>
+                <div className="panel-body">
 
                 <ul>
                     {this.renderGroups()}
                 </ul>
                 </div>
+                </div>
+                </div>
+                </div>
+</div>
+
         )
     }
 }

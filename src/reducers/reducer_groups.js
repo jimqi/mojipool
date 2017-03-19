@@ -19,6 +19,7 @@ export default function (state = INITIAL_STATE, action) {
         case FETCH_GROUP:
             return state; //TODO
         case FETCH_GROUPS:
+            console.log(action.payload);
             return {...state, all: action.payload.data };
         default:
             return state;

@@ -1,12 +1,14 @@
 import axios from 'axios';
 
-const SERVER_ADDRESS = 'http://40.71.231.27:5000';
-const TEST_ACTION = 'TEST_ACTION';
-const LOGIN = 'LOGIN';
-const REGISTER = 'REGISTER';
-const CREATE_GROUP = 'CREATE_GROUP';
-const FETCH_GROUP = 'FETCH_GROUP';
-const FETCH_GROUPS = 'FETCH_GROUPS';
+export const SERVER_ADDRESS = 'http://40.71.231.27:5000';
+export const TEST_ACTION = 'TEST_ACTION';
+export const LOGIN = 'LOGIN';
+export const REGISTER = 'REGISTER';
+export const CREATE_GROUP = 'CREATE_GROUP';
+export const FETCH_GROUP = 'FETCH_GROUP';
+export const FETCH_GROUPS = 'FETCH_GROUPS';
+export const FETCH_GROUPS_SUCCESS = 'FETCH_GROUPS_SUCCESS';
+export const FETCH_GROUPS_FAILURES = 'FETCH_GROUPS_FAILURE';
 
 export function testAction(testString) {
     console.log(testString);
@@ -29,7 +31,7 @@ export function login(username, password) {
 }
 
 export function register(username, password) {
-    const request = axios.post(`${SERVER_ADDRESS}/register`, {
+    const request = axios.post(`${SERVER_ADDRESS}/signup`, {
         username: username,
         password: password
     });
@@ -48,12 +50,30 @@ export function fetchGroup(groupId) {
         payload: request
     }
 }
-export function fetchGroups() {
-    const request = axios.get(`${SERVER_ADDRESS}/groups`);
 
+export function fetchGroups() {
+    return function (dispatch) {
+        axios.get(`${SERVER_ADDRESS}/groups`)
+            .then((response) => {
+                dispatch(fetchGroupsSuccess(response));
+            }).catch((err) => {
+                dispatch(fetchGroupsFailure(err));
+            }
+        )
+    }
+}
+
+export function fetchGroupsSuccess(response) {
     return {
-        type: FETCH_GROUPS,
-        payload: request
+        type: FETCH_GROUPS_SUCCESS,
+        payload: response
+    }
+}
+
+export function fetchGroupsFailure(err) {
+    return {
+        type: FETCH_GROUPS_SUCCESS,
+        payload: err
     }
 }
 export function createGroup(groupName) {

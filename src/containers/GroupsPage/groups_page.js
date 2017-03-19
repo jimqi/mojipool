@@ -16,30 +16,33 @@ class RegistrationPage extends Component {
     renderGroups() {
         return this.props.groups.map((group) => {
             return (
-                <GroupListItem groupName={group.groupName} key={group.groupId} />
+                <GroupListItem groupName={group.groupName} numMembers={group.numMembers} key={group.groupId} />
             )
         })
     }
 
     render() {
         return (
-            <div>
-                <div className="panel panel-default">
-                    <div className="panel-heading">Manage Groups</div>
-                    <div className="panel-body">
+                <div className="">
+                    <div className="jumbotron"><h1>Manage Groups</h1>
+                    <p>Create or Choose Group</p>
+                    </div>
+                <div className="container">
+
+                    <div className="card-block">
 
                         <div id="education_fields">
 
                         </div>
                         <div className="col-sm-3 nopadding">
                             <div className="form-group">
-                                <input type="text" className="form-control" id="Schoolname" name="firstname[]" value=""
+                                <input type="text" className="form-control" id="firstname" name="firstname[]" value=""
                                        placeholder="First Name"/>
                             </div>
                         </div>
                         <div className="col-sm-3 nopadding">
                             <div className="form-group">
-                                <input type="text" className="form-control" id="Major" name="lastname[]" value=""
+                                <input type="text" className="form-control" id="lastname" name="lastname[]" value=""
                                        placeholder="Last Name"/>
                             </div>
                         </div>
@@ -65,7 +68,7 @@ class RegistrationPage extends Component {
                 <ul>
                     {this.renderGroups()}
                 </ul>
-            </div>
+                </div>
         )
     }
 }

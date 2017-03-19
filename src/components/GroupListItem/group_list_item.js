@@ -1,8 +1,13 @@
 import React from 'react';
 
-const GroupListItem = ({ groupName }) => {
+import './group_list_item.css';
+const GroupListItem = ({ groupName, numMembers }) => {
     return (
-        <div> {groupName} </div>
+    <div className="col-md-6">
+               <div className="specialpanel">
+               {groupName} {numMembers}
+               </div>
+   </div>
     )
 }
 

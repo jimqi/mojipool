@@ -110,15 +110,8 @@ def addmember():
 
 
 
-@app.route('/getMembers', methods = ['POST'])
-def members():
-	data = {}
-        json_dict = request.get_json()
-	groupID = json_dict["groupID"]
-	query = "SELECT * from members where gid={gID};".format(gID=groupID)
-	cur.execute(query)
-	print(cur.fetchall())
-	return "hello"
+#@app.route('/', methods = ['POST'])
+
 
 
 

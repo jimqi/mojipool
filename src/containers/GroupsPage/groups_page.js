@@ -1,14 +1,11 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
-import { fetchGroups } from '../../actions/actions';
+import { Link } from 'react-router';
+import { fetchGroups, setupMojioClient } from '../../actions/actions';
 import GroupListItem from '../../components/GroupListItem/group_list_item';
 
 import './groups_page.css';
 class RegistrationPage extends Component {
-    componentWillMount() {
-        this.props.fetchGroups();
-    }
-
     onClick(event) {
         console.log("Adding a group");
     }
@@ -28,41 +25,9 @@ class RegistrationPage extends Component {
                     <p>Create or Choose Group</p>
                     </div>
                 <div className="container">
-
-                    <div className="card-block">
-
-                        <div id="education_fields">
-
-                        </div>
-                        <div className="col-sm-3 nopadding">
-                            <div className="form-group">
-                                <input type="text" className="form-control" id="firstname" name="firstname[]" value=""
-                                       placeholder="First Name"/>
-                            </div>
-                        </div>
-                        <div className="col-sm-3 nopadding">
-                            <div className="form-group">
-                                <input type="text" className="form-control" id="lastname" name="lastname[]" value=""
-                                       placeholder="Last Name"/>
-                            </div>
-                        </div>
-
-
-                        <div className="col-sm-3 nopadding">
-                            <div className="form-group">
-                                <div className="input-group">
-
-                                    <div className="input-group-btn">
-                                        <button className="btn btn-success" type="button" onClick={this.onClick}>
-                                            <span className="glyphicon glyphicon-plus" aria-hidden="true"></span>
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="clear"></div>
-
-                    </div>
+                    <Link to="create">
+                        <button>Create Group</button>
+                    </Link>
                 </div>
 
                 <ul>
@@ -76,8 +41,10 @@ class RegistrationPage extends Component {
 
 function mapStateToProps(state) {
     return {
-        groups: state.groups.all
+        groups: state.groups.all,
+        mojioToken: state.sessionInfo.mojioToken,
+        mojioClient: state.sessionInfo.mojioClient,
     }
 }
 
-export default connect(mapStateToProps, { fetchGroups })(RegistrationPage);
+export default connect(mapStateToProps, { fetchGroups, setupMojioClient })(RegistrationPage);

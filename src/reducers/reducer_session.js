@@ -1,15 +1,17 @@
-import { LOGIN_SUCCESS, REGISTER, GET_TOKEN } from '../actions/actions';
+import { browserHistory } from 'react-router';
 
-const INITIAL_STATE = {userId: null, sessionId: null, mojioToken: null};
+import { LOGIN_SUCCESS, REGISTER, MOJIO_CLIENT } from '../actions/actions';
+
+const INITIAL_STATE = {userId: null, sessionId: null};
 
 export default function (state = INITIAL_STATE, action) {
     switch (action.type) {
         case LOGIN_SUCCESS:
-            return {userId: action.payload.data.uID, sessionId: action.payload.data.sessionId};
+            browserHistory.push('/groups')
+            return {userId: action.payload.data.uID, sessionId: action.payload.data.sessionID};
         case REGISTER:
-            return {userId: action.payload.data.uID, sessionId: action.payload.data.sessionId};
-        case GET_TOKEN:
-            return {mojioToken: action.payload}
+            browserHistory.push('/groups')
+            return {userId: action.payload.data.uID, sessionId: action.payload.data.sessionID};
         default:
             return state;
     }

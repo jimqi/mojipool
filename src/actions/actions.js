@@ -2,16 +2,13 @@ import axios from 'axios';
 
 export const SERVER_ADDRESS = 'https://40.71.231.27:5000';
 
-export const LOGIN = 'LOGIN';
 export const LOGIN_SUCCESS = 'LOGIN_SUCCESS';
 export const LOGIN_FAILURE = 'LOGIN_FAILURE';
 export const REGISTER = 'REGISTER';
-export const GET_TOKEN = 'GET_TOKEN';
 export const CREATE_GROUP = 'CREATE_GROUP';
 export const FETCH_GROUP = 'FETCH_GROUP';
 export const FETCH_GROUPS = 'FETCH_GROUPS';
 export const FETCH_GROUPS_SUCCESS = 'FETCH_GROUPS_SUCCESS';
-export const FETCH_GROUPS_FAILURES = 'FETCH_GROUPS_FAILURE';
 
 export function login(username, password) {
     return function (dispatch) {
@@ -50,10 +47,6 @@ export function register(username, password) {
         type: REGISTER,
         payload: request,
     }
-}
-
-export function getToken() {
-
 }
 
 export function fetchGroup(groupId) {

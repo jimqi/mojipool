@@ -6,14 +6,10 @@ class RegistrationPage extends Component {
 
     render() {
         return (
-<div className="card">
-    <h3 className="card-header primary-color white-text">Featured</h3>
-    <div className="card-block">
-        <h4 className="card-title">Special title treatment</h4>
-        <p className="card-text">With supporting text below as a natural lead-in to additional content.</p>
-        <a className="btn btn-primary">Go somewhere</a>
-    </div>
-</div>
+        <div className="jumbotron"><h1>Group Info</h1>
+           <p>Manage gas cost per member and access historical trip information</p>
+         </div>
+
 
         )
     }

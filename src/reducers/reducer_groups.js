@@ -17,7 +17,7 @@ const INITIAL_STATE = { all: [TEST_GROUP_1, TEST_GROUP_2], group: null };
 export default function (state = INITIAL_STATE, action) {
     switch(action.type) {
         case FETCH_GROUP:
-            return state; //TODO
+            return {...state, group: action.payload.data }
         case FETCH_GROUPS:
             console.log(action.payload);
             return {...state, all: action.payload.data };

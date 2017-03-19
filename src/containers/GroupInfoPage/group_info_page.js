@@ -1,13 +1,15 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-
+import { fetchGroup } from '../../actions/actions';
 import TripList from './TripList/trip_list';
 import InfoPanel from './InfoPanel/info_panel';
 import MembersList from './MembersList/members_list';
 
 import './group_info_page.css';
 class RegistrationPage extends Component {
-
+    componentWillMount() {
+        this.props.fetchGroup(this.props.params.id);
+    }
     render() {
         return (
         <div>
@@ -35,4 +37,4 @@ function mapStateToProps(state) {
     }
 }
 
-export default connect(mapStateToProps, null)(RegistrationPage);
+export default connect(mapStateToProps, { fetchGroup })(RegistrationPage);

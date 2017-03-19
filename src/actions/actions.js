@@ -9,6 +9,8 @@ export const CREATE_GROUP = 'CREATE_GROUP';
 export const FETCH_GROUP = 'FETCH_GROUP';
 export const FETCH_GROUPS = 'FETCH_GROUPS';
 export const FETCH_GROUPS_SUCCESS = 'FETCH_GROUPS_SUCCESS';
+export const FETCH_MEMBERS = 'FETCH_MEMBERS';
+export const ADD_MEMBERS = 'ADD_MEMBERS';
 
 export function login(username, password) {
     return function (dispatch) {
@@ -54,6 +56,29 @@ export function fetchGroup(groupId) {
 
     return {
         type: FETCH_GROUP,
+        payload: request
+    }
+}
+
+export function fetchMembers(groupId) {
+    const request = axios.put(`${SERVER_ADDRESS}/groups`, {
+        groupId: groupId
+    });
+
+    return {
+        type: FETCH_MEMBERS,
+        payload: request
+    }
+}
+
+export function addMembers(username, groupname) {
+    const request = axios.put(`${SERVER_ADDRESS}/addMembers`, {
+        username: username,
+        groupname: groupname
+    });
+
+    return {
+        type: ADD_MEMBERS,
         payload: request
     }
 }
